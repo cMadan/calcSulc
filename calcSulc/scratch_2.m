@@ -50,6 +50,6 @@ patch('Faces',f(sulc_e,:)+1,'Vertices',pial_v,'FaceVertexCData',c,...
 
 %
 figure
-vv = inflated_v(link,:);
+vv = inflated_v(edgeloop,:);
 plot3(vv(:,1),vv(:,2),vv(:,3))
 

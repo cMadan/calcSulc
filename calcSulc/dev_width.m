@@ -1,3 +1,5 @@
+clear,clc
+
 sub = '0028505'; % 20 year old
 %sub = '0028594'; % 80 year old
 
@@ -50,10 +52,8 @@ v_e = pial_v(v_e,:);
 
 % get loop of edges along boundary of sulci
 tic
-[~,edgeloop,link_solver] = getEdges(f(sulc_e,:),label_v);
+[~,edgeloop,link_solver] = getEdges(f(sulc_e,:)+1,label_v);
 toc
-%% STILL NEEDS WORK
-
 
 % load sulc map
 fname_map   = fullfile(options.subject_dir,sub,'surf',sprintf('%s.%s',hemi,'sulc'));

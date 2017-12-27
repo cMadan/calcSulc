@@ -15,7 +15,7 @@ end
 % only keep the edges where both vertices are from the determined list
 % (if provided)
 if nargin == 2
-    edges = edges(sum(ismember(edges+1,label),2)==2,:);
+    edges = edges(sum(ismember(edges,label),2)==2,:);
 end
 
 % re-organize edge array to always have lower vertex number first
