@@ -14,8 +14,11 @@ end
 list_annot = cmap.struct_names;
 % this is all of the Dest labels
 
-sulc = list_annot{47};
+sulc = list_annot{47}
 % sulc = 'S_central'
+
+sulc = list_annot([47,56,54,69,58,59,75,74,48,67,63,66,65])
+
 
 
 
