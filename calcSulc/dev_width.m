@@ -51,9 +51,7 @@ v_e = unique(v_e(:));
 v_e = pial_v(v_e,:);
 
 % get loop of edges along boundary of sulci
-tic
-[~,edgeloop,link_solver] = getEdges(f(sulc_e,:)+1,label_v);
-toc
+[~,edgeloop] = getEdgeLoop(f(sulc_e,:)+1,label_v);
 
 % load sulc map
 fname_map   = fullfile(options.subject_dir,sub,'surf',sprintf('%s.%s',hemi,'sulc'));
