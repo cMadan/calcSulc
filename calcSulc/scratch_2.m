@@ -43,6 +43,13 @@ figure
 patch('Faces',f(sulc_f,:)+1,'Vertices',pial_v,'FaceVertexCData',c,...
     'CDataMapping','direct','facecolor','interp','edgecolor','none')
 
+%
 figure
 patch('Faces',f(sulc_e,:)+1,'Vertices',pial_v,'FaceVertexCData',c,...
     'CDataMapping','direct','facecolor','interp','edgecolor','none')
+
+%
+figure
+vv = inflated_v(link,:);
+plot3(vv(:,1),vv(:,2),vv(:,3))
+

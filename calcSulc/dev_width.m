@@ -1,5 +1,5 @@
-%sub = '0028505'; % 20 year old
-sub = '0028594'; % 80 year old
+sub = '0028505'; % 20 year old
+%sub = '0028594'; % 80 year old
 
 %% config settings that we would expect to be passed into the wrapper
 options.list_sulc = {'S_central'};
@@ -41,7 +41,19 @@ fname_surf      = fullfile(options.subject_dir,sub,'surf',sprintf('%s.%s',hemi,'
 % isolate faces that include all 3 vertices
 sulc_f_member = ismember(f+1,label_v);
 sulc_f = sum(sulc_f_member,2)==3;
-sulc_e = sum(sulc_f_member,2)>0 & ~sulc_f; % edges only
+sulc_e = sum(sulc_f_member,2)==2; % edges only
+
+% isolate edge vertices
+v_e = f(sulc_e,:)+1;
+v_e = unique(v_e(:));
+v_e = pial_v(v_e,:);
+
+% get loop of edges along boundary of sulci
+tic
+[~,edgeloop,link_solver] = getEdges(f(sulc_e,:),label_v);
+toc
+%% STILL NEEDS WORK
+
 
 % load sulc map
 fname_map   = fullfile(options.subject_dir,sub,'surf',sprintf('%s.%s',hemi,'sulc'));
