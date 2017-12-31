@@ -1,0 +1,30 @@
+function output = calcSulc(options)
+
+% for subject
+subject = '0028505#};
+
+s_w = [];
+%s_d = [];
+for hemi = {'lh','rh'}
+    % load the surfaces and annot
+    subject_hemi = calcSulc_load(options,subject,hemi);
+       
+    % process each sulci
+    for sulc    = options.list_sulc
+        % process each sulci and measure in individual functions
+        % to keep namespace more organized
+        
+        % isolate the mesh for the specific sulci
+        mesh    = calcSulc_isolate(options,subject_hemi,sulc);
+        
+        % calculate the width
+        sulci_w = calcSulc_width(options,subject_hemi,mesh);
+        
+        % calculate the depth
+        %sulci_d = calcSulc_depth(options,mesh);
+    
+        % store values
+        s_w = [s_w sulci_w];
+        %s_d = [s_d sulci_d];
+    end
+end
