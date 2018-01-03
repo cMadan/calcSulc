@@ -2,7 +2,7 @@ function output = calcSulc(subjects,subject_dir,options)
 
 %% prep
 % get full list of subjects if asked
-if strcmp(subjects{1},'.');
+if strcmp(subjects{1},'.')
     list = dir(fullfile(subject_dir));
     list = {list([list.isdir]).name};
     
@@ -29,6 +29,7 @@ for s = 1:length(list_subject)
     s_w = [];
     %s_d = [];
     
+    count = 0;
     for hemi = {'lh','rh'}
         hemi = char(hemi);
         % load the surfaces and annot
@@ -36,6 +37,7 @@ for s = 1:length(list_subject)
         
         % process each sulci
         for sulc    = options.list_sulc
+            %sulc
             % process each sulci and measure in individual functions
             % to keep namespace more organized
             
@@ -51,16 +53,18 @@ for s = 1:length(list_subject)
             % store values
             s_w = [s_w sulci_w];
             %s_d = [s_d sulci_d];
+            count = count +1;
+            fprintf('%g.',count)
         end
     end
     
     sub_s_w = [sub_s_w; s_w];
     %sub_s_d = [sub_s_w; s_d];
     
-    fprintf('done.\n')
+    fprintf('...done.\n')
 end
 
-output.list_subjects    = options.list_subjects;
+output.list_subjects    = list_subjects;
 output.list_sulc        = options.list_sulc;
 output.sulci_width      = sub_s_w;
 %output.sulci_depth      = sub_s_d;

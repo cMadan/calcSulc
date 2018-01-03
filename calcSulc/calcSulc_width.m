@@ -10,6 +10,9 @@ try
     
     % get loop of edges along boundary of sulci
     [~,edgeloop] = calcSulc_getEdgeLoop(subject_hemi.f(sulc_e,:)+1,mesh.label_v);
+    if edgeloop == NaN
+        [~,edgeloop] = calcSulc_getEdgeLoopRobust(subject_hemi.f(sulc_e,:)+1,mesh.label_v);
+    end
     p_e = length(edgeloop)-1;
     % make edgeloop easier to wrap around
     edgeloop = [edgeloop(1:end); edgeloop(2:(end-1)); edgeloop(1:end)];

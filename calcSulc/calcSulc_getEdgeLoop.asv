@@ -58,7 +58,7 @@ while link_closed == 0
             end
         end
     else
-        % edge isolation failed :(
+        % edge defailed
         link_solve = NaN;
         return
     end

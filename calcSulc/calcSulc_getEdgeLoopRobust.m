@@ -1,7 +1,8 @@
-function  [return_edges,return_link,link_solve] = getEdges(faces,label)
+function  [return_edges,return_link,link_solve] = calcSulc_getEdgeLoopRobust(faces,label)
 % Convert a face array to an array of edges.
 % Additionally outputs a list of vertices, such that the edges form a loop
 % (circle).
+% More thorough than the 'regular' variant.
 
 %% Edges
 % convert face array to edge array
@@ -29,7 +30,7 @@ return_edges = edges;
 %% Construct the loop
 v = unique(edges(:));
 attempt = 1;
-textprogressbar('Calculating sulci boundary:  ')
+%textprogressbar('Calculating sulci boundary:  ')
 
 % solve with *all* possible starts
 % else may solve, but have a sub-optimal path
@@ -73,7 +74,7 @@ while attempt <= length(v)
         end
     end
     attempt = attempt+1;
-    textprogressbar(attempt/length(v)*100)
+    %textprogressbar(attempt/length(v)*100)
 end
 
 
@@ -88,5 +89,5 @@ else
     return_link = NaN;
 end
 
-textprogressbar(' done.');
+%textprogressbar(' done.');
 
