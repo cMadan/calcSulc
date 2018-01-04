@@ -64,7 +64,7 @@ for s = 1:length(list_subject)
     fprintf('...done.\n')
 end
 
-output.list_subjects    = list_subjects;
+output.list_subject     = list_subject;
 output.list_sulc        = options.list_sulc;
 output.sulci_width      = sub_s_w;
 %output.sulci_depth      = sub_s_d;
