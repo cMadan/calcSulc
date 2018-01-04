@@ -70,3 +70,4 @@ output.sulci_width      = sub_s_w;
 %output.sulci_depth      = sub_s_d;
 
 % some save functionality...
+save temp

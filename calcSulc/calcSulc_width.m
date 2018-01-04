@@ -1,6 +1,6 @@
 function width = calcSulc_width(options,subject_hemi,mesh)
 
-try
+%try
     %% edge (for width)
     % isolate edge vertices
     sulc_e = sum(mesh.sulc_f_member,2)==2;
@@ -9,9 +9,15 @@ try
     v_e = subject_hemi.pial_v(v_e,:);
     
     % get loop of edges along boundary of sulci
+    try
     [~,edgeloop] = calcSulc_getEdgeLoop(subject_hemi.f(sulc_e,:)+1,mesh.label_v);
-    if edgeloop == NaN
+    catch
+    try
         [~,edgeloop] = calcSulc_getEdgeLoopRobust(subject_hemi.f(sulc_e,:)+1,mesh.label_v);
+    catch
+        width = NaN;
+        return
+    end
     end
     p_e = length(edgeloop)-1;
     % make edgeloop easier to wrap around
@@ -62,8 +68,8 @@ try
         end
     end
     
-    width = median(width(:,1));
+    width = nanmedian(width(:,1));
     
-catch
-    width = NaN;
-end
+%catch
+%    width = NaN;
+%end
