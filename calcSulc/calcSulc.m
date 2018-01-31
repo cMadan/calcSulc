@@ -45,7 +45,8 @@ for s = 1:length(list_subject)
             mesh    = calcSulc_isolate(options,subject_hemi,sulc);
             
             % calculate the width
-            sulci_w = calcSulc_width(options,subject_hemi,mesh);
+            %sulci_w = calcSulc_width(options,subject_hemi,mesh);
+            sulci_w = cache_results(@calcSulc_width,{options,subject_hemi,mesh});
             
             % calculate the depth
             %sulci_d = calcSulc_depth(options,mesh);
