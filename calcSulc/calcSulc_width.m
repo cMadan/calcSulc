@@ -50,7 +50,7 @@ function width = calcSulc_width(options,subject_hemi,mesh)
         for walk = 1:options.walk
             seed_iter = seed;
             for s = 1:length(seed)
-                seed_walk = subject_hemi.f(sum(subject_hemi.f==seed(s),2)>0,:);
+                seed_walk = subject_hemi.f(sum(subject_hemi.f==seed(s),2)>0,:)+1;
                 seed_iter = [seed_iter; unique(seed_walk(:))];
             end
             seed = unique(seed_iter);
