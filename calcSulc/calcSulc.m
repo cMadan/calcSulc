@@ -19,15 +19,36 @@ else
     list_subject = subjects;
 end
 
+% set defaults for options if not set
+% see if we are doing both width and depth
+% default is yes
+if ~isfield(options,'estimateWidth')
+    options.estimateWidth = 1;
+end
+if ~isfield(options,'setWidthWalk')
+    options.setWidthWalk = 4;
+end
+if ~isfield(options,'estimateDepth')
+    options.estimateDepth = 1;
+end
+
+
+% use caching?
+% default is not
+if ~isfield(options,'useCache')
+    options.useCache = 0;
+end
+
+
 %% exec
 sub_s_w = [];
-%sub_s_d = [];
+sub_s_d = [];
 
 for s = 1:length(list_subject)
     fprintf('Calculating sulci for subject %s...',list_subject{s})
     
     s_w = [];
-    %s_d = [];
+    s_d = [];
     
     count = 0;
     for hemi = {'lh','rh'}
@@ -45,30 +66,52 @@ for s = 1:length(list_subject)
             mesh    = calcSulc_isolate(options,subject_hemi,sulc);
             
             % calculate the width
-            %sulci_w = calcSulc_width(options,subject_hemi,mesh);
-            sulci_w = cache_results(@calcSulc_width,{options,subject_hemi,mesh});
+            if options.estimateWidth
+                if ~options.useCache
+                    sulci_w = calcSulc_width(options,subject_hemi,mesh);
+                else
+                    sulci_w = cache_results(@calcSulc_width,{options,subject_hemi,mesh});
+                end
+                % store values
+                s_w = [s_w sulci_w];
+            end
             
             % calculate the depth
-            %sulci_d = calcSulc_depth(options,mesh);
+            if options.estimateDepth
+                % additionally need sulcal map
+                
+                % also need gyrification surface
+                
+                
+                if ~options.useCache
+                    sulci_d = calcSulc_depth(options,subject_hemi,mesh,map,gyrifmesh);
+                else
+                    sulci_d = cache_results(@calcSulc_depth,{options,subject_hemi,mesh,sulcmap,gyrifmesh});
+                end
+                % store values
+                s_d = [s_d sulci_d];
+            end
             
-            % store values
-            s_w = [s_w sulci_w];
-            %s_d = [s_d sulci_d];
+            % continue to next sulci
             count = count +1;
             fprintf('%g.',count)
         end
     end
     
     sub_s_w = [sub_s_w; s_w];
-    %sub_s_d = [sub_s_w; s_d];
+    sub_s_d = [sub_s_w; s_d];
     
     fprintf('...done.\n')
 end
 
+% push outputs
 output.list_subject     = list_subject;
 output.list_sulc        = options.list_sulc;
-output.sulci_width      = sub_s_w;
-%output.sulci_depth      = sub_s_d;
+if options.estimateWidth
+    output.sulci_width  = sub_s_w;
+end
+if options.estimateDepth
+    output.sulci_depth  = sub_s_d;
+end
 
-% some save functionality...
-save temp
+% return output
