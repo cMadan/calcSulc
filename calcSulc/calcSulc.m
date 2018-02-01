@@ -49,8 +49,9 @@ for s = 1:length(list_subject)
     
     s_w = [];
     s_d = [];
-    
     count = 0;
+    
+    % do all of the sulci for each hemi
     for hemi = {'lh','rh'}
         hemi = char(hemi);
         % load the surfaces and annot
@@ -58,7 +59,6 @@ for s = 1:length(list_subject)
         
         % process each sulci
         for sulc    = options.list_sulc
-            %sulc
             % process each sulci and measure in individual functions
             % to keep namespace more organized
             
@@ -78,15 +78,10 @@ for s = 1:length(list_subject)
             
             % calculate the depth
             if options.estimateDepth
-                % additionally need sulcal map
-                
-                % also need gyrification surface
-                
-                
                 if ~options.useCache
-                    sulci_d = calcSulc_depth(options,subject_hemi,mesh,map,gyrifmesh);
+                    sulci_d = calcSulc_depth(options,subject_hemi,mesh);
                 else
-                    sulci_d = cache_results(@calcSulc_depth,{options,subject_hemi,mesh,sulcmap,gyrifmesh});
+                    sulci_d = cache_results(@calcSulc_depth,{options,subject_hemi,mesh});
                 end
                 % store values
                 s_d = [s_d sulci_d];
@@ -99,7 +94,7 @@ for s = 1:length(list_subject)
     end
     
     sub_s_w = [sub_s_w; s_w];
-    sub_s_d = [sub_s_w; s_d];
+    sub_s_d = [sub_s_d; s_d];
     
     fprintf('...done.\n')
 end

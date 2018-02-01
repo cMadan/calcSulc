@@ -11,7 +11,7 @@ options.list_sulc = {'S_central','S_front_sup','S_front_inf',...
 % settings
 options.setWidthWalk  = 4;
 options.estimateWidth = 1;
-options.estimateDepth = 0;
+options.estimateDepth = 1;
 options.useCache      = 1;
 
 % exec
