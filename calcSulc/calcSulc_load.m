@@ -26,7 +26,7 @@ subject_hemi.inflated_v = inflated_v;
 %% if we're going to estimate depth, will also need some additional files
 
 if options.estimateDepth
-    
+    try
     % sulcal map
     fname_sulcmap     = fullfile(subject_dir,subject,'surf',sprintf('%s.sulc',hemi));
     sulcmap           = read_curv(fname_sulcmap);
@@ -37,6 +37,10 @@ if options.estimateDepth
     [gyrif_v,gyrif_f]       = read_surf(fname_surf);
     subject_hemi.gyrif_v    = gyrif_v;
     subject_hemi.gyrif_f    = gyrif_f;
+    catch
+        % gyrif wasn't successful
+        % do nothing
+    end
     
 end
 
