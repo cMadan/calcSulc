@@ -100,6 +100,7 @@ for s = 1:length(list_subject)
 end
 
 % push outputs
+output.options          = options;
 output.list_subject     = list_subject;
 output.list_sulc        = options.list_sulc;
 if options.estimateWidth
