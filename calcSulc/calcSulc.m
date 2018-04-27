@@ -110,4 +110,7 @@ if options.estimateDepth
     output.sulci_depth  = sub_s_d;
 end
 
+% write CSVs out too
+calcSulc_save
+
 % return output
