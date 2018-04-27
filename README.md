@@ -1,7 +1,7 @@
 # calcSulc
 Calculate sulcal morphology from FreeSurfer surface files
 
-Current version: build 12
+Current version: build 13
 
 
 ### Output caching
