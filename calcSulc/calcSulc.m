@@ -13,15 +13,14 @@ function output = calcSulc(subjects,subject_dir,options)
 %                 See wrapper_sample for details.
 % ----
 %
-% The calcSulc toolbox is available from: http://cmadan.github.io/calcFD/.
+% The calcSulc toolbox is available from: http://cmadan.github.io/calcSulc/.
 % 
 % Please cite this paper if you use the toolbox:
-%   Madan, C. R. (under review). Age differences in estimates of 
-%   sulcal morphology.
+%   Madan, C. R. (under review). TBD
 %
 % 
-% 20180524 CRM
-% build 13
+% 20180808 CRM
+% build 14
 
 
 %% prep
@@ -91,10 +90,11 @@ for s = 1:length(list_subject)
             
             % calculate the width
             if options.estimateWidth
+                opt_w = selectfields(options,{'estimateWidth','setWidthWalk'});
                 if ~options.useCache
-                    sulci_w = calcSulc_width(options,subject_hemi,mesh);
+                    sulci_w = calcSulc_width(opt_w,subject_hemi,mesh);
                 else
-                    sulci_w = cache_results(@calcSulc_width,{options,subject_hemi,mesh});
+                    sulci_w = cache_results(@calcSulc_width,{opt_w,subject_hemi,mesh});
                 end
                 % store values
                 s_w = [s_w sulci_w];
@@ -102,10 +102,11 @@ for s = 1:length(list_subject)
             
             % calculate the depth
             if options.estimateDepth
+                opt_d = selectfields(options,{'estimateDepth'});
                 if ~options.useCache
-                    sulci_d = calcSulc_depth(options,subject_hemi,mesh);
+                    sulci_d = calcSulc_depth(opt_d,subject_hemi,mesh);
                 else
-                    sulci_d = cache_results(@calcSulc_depth,{options,subject_hemi,mesh});
+                    sulci_d = cache_results(@calcSulc_depth,{opt_d,subject_hemi,mesh});
                 end
                 % store values
                 s_d = [s_d sulci_d];
