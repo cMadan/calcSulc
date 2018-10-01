@@ -5,12 +5,34 @@ Current version: build 14
 
 ## Citing the toolbox
 Please cite this paper if you use the toolbox:
-* Madan, C. R. (under review). TBD
+* Madan, C. R. (under review). Extending FreeSurfer to estimate sulcal morphology.
 
 ## Documentation
 
 ```
-***code snippet***
+function output = calcSulc(subjects,subject_dir,options)
+% Calculate sulcal morphology from a FreeSurfer estimated surface mesh.
+% Designed to work with intermediate files from FreeSurfer analysis
+% pipeline.
+% 
+% REQUIRED INPUTS:
+% subjects      = list of subjects names in a cell array
+%                 alternatively accepts {'.'} to run on all subjects in folder
+%
+% subject_dir   = FreeSurfer 'SUBJECTDIR' where standard directory structure is
+%
+% options       = specify details of running the analysis
+%                 See wrapper_sample for details.
+% ----
+%
+% The calcSulc toolbox is available from: http://cmadan.github.io/calcSulc/.
+% 
+% Please cite this paper if you use the toolbox:
+%   Madan, C. R. (under review). Extending FreeSurfer to estimate sulcal morphology.
+%
+% 
+% 20180808 CRM
+% build 14
 ```
 
 ## Output caching

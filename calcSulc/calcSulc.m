@@ -16,7 +16,7 @@ function output = calcSulc(subjects,subject_dir,options)
 % The calcSulc toolbox is available from: http://cmadan.github.io/calcSulc/.
 % 
 % Please cite this paper if you use the toolbox:
-%   Madan, C. R. (under review). TBD
+%   Madan, C. R. (under review). Extending FreeSurfer to estimate sulcal morphology.
 %
 % 
 % 20180808 CRM
@@ -43,6 +43,7 @@ else
 end
 
 % set defaults for options if not set
+
 % see if we are doing both width and depth
 % default is yes
 if ~isfield(options,'estimateWidth')
@@ -54,7 +55,6 @@ end
 if ~isfield(options,'estimateDepth')
     options.estimateDepth = 1;
 end
-
 
 % use caching?
 % default is not
