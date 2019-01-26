@@ -28,7 +28,7 @@ function output = calcSulc(subjects,subject_dir,options)
 % The calcSulc toolbox is available from: http://cmadan.github.io/calcSulc/.
 % 
 % Please cite this paper if you use the toolbox:
-%   Madan, C. R. (under review). Extending FreeSurfer to estimate sulcal morphology.
+%   Madan, C. R. (under review). Robust estimation of sulcal morphology.
 %
 % 
 % 20180808 CRM
