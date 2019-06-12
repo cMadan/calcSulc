@@ -1,11 +1,9 @@
 # calcSulc toolbox
 A toolbox for MATLAB for calculating sulcal morphology (width and depth) from FreeSurfer surface files.
 
-Current version: build 14
-
 ## Citing the toolbox
 Please cite this paper if you use the toolbox:
-* Madan, C. R. (under review). Extending FreeSurfer to estimate sulcal morphology.
+* Madan, C. R. (2019). Extending FreeSurfer to estimate sulcal morphology. *Brain Informatics 6*, 5. doi:10.1186/s40708-019-0098-1
 
 ## Documentation
 
@@ -28,7 +26,8 @@ function output = calcSulc(subjects,subject_dir,options)
 % The calcSulc toolbox is available from: http://cmadan.github.io/calcSulc/.
 % 
 % Please cite this paper if you use the toolbox:
-%   Madan, C. R. (under review). Robust estimation of sulcal morphology.
+%   Madan, C. R. (in press). Robust estimation of sulcal morphology. Brain 
+%   Informatics. doi:10.1186/s40708-019-0098-1
 %
 % 
 % 20180808 CRM
