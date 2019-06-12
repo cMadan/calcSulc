@@ -18,7 +18,6 @@ function output = calcSulc(subjects,subject_dir,options)
 % Please cite this paper if you use the toolbox:
 %   Madan, C. R. (2019). Robust estimation of sulcal morphology.
 %		Brain Informatics, 6, 5. doi:10.1186/s40708-019-0098-1
-%
 % 
 % 20180808 CRM
 % build 14
