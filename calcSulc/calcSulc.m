@@ -35,7 +35,7 @@ if strcmp(subjects{1},'.')
     list_subject = list;
 elseif length(strfind(subjects{1},'*'))==1
     % subjects name has a wildcard, but only expect one entry then
-    list = dir(fullfile(subjectpath,subjects{1}));
+    list = dir(fullfile(subject_dir,subjects{1}));
     list = {list([list.isdir]).name};
     list_subject = list;
 else
