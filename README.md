@@ -3,7 +3,7 @@ A toolbox for MATLAB for calculating sulcal morphology (width and depth) from Fr
 
 ## Citing the toolbox
 Please cite this paper if you use the toolbox:
-* Madan, C. R. (2019). Extending FreeSurfer to estimate sulcal morphology. *Brain Informatics 6*, 5. doi:10.1186/s40708-019-0098-1
+* Madan, C. R. (2019). Robust estimation of sulcal morphology. *Brain Informatics 6*, 5. doi:10.1186/s40708-019-0098-1
 
 ## Documentation
 
