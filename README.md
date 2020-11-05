@@ -1,6 +1,8 @@
 # calcSulc toolbox
 A toolbox for MATLAB for calculating sulcal morphology (width and depth) from FreeSurfer surface files.
 
+The toolbox does require some Matlab functions that are distributed with FreeSurfer (e.g., `read_surf`, `read_annotation`). These can be found as part of our local FreeSurfer installation. Alternatively, these can be found in the FreeSurfer GitHub repository (see https://github.com/freesurfer/freesurfer/tree/dev/matlab).
+
 ## Citing the toolbox
 Please cite this paper if you use the toolbox:
 * Madan, C. R. (2019). Robust estimation of sulcal morphology. *Brain Informatics 6*, 5. doi:10.1186/s40708-019-0098-1
