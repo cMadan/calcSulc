@@ -3,6 +3,8 @@ A toolbox for MATLAB for calculating sulcal morphology (width and depth) from Fr
 
 The toolbox does require some Matlab functions that are distributed with FreeSurfer (e.g., `read_surf`, `read_annotation`). These can be found as part of our local FreeSurfer installation. Alternatively, these can be found in the FreeSurfer GitHub repository (see https://github.com/freesurfer/freesurfer/tree/dev/matlab).
 
+The toolbox also requires that the subjects have been run through the gyrification analyses that are optional within FreeSurfer (https://surfer.nmr.mgh.harvard.edu/fswiki/LGI).
+
 ## Citing the toolbox
 Please cite this paper if you use the toolbox:
 * Madan, C. R. (2019). Robust estimation of sulcal morphology. *Brain Informatics 6*, 5. doi:10.1186/s40708-019-0098-1
